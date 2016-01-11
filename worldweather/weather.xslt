@@ -22,15 +22,15 @@ This XSLT is used to translate an XML response from the www.google.com/ig/
 	
     <xsl:template match="data">
         <xsl:variable name="new-line"><xsl:text>&#10;</xsl:text></xsl:variable>
-        <xsl:text>  Location: </xsl:text><xsl:value-of select="request/query"/> 
+        <xsl:text>  ${offset 72} Location: </xsl:text><xsl:value-of select="request/query"/> 
         <xsl:value-of select="$new-line" />
-        <xsl:text>  Temperature: </xsl:text><xsl:value-of select="tmp"/><xsl:value-of select="current_condition/temp_C"/>
+        <xsl:text>  ${offset 72} Temperature: </xsl:text><xsl:value-of select="tmp"/><xsl:value-of select="current_condition/temp_C"/>
         <xsl:text> C</xsl:text>
         <xsl:value-of select="$new-line" />
-        <xsl:text>  Conditions: </xsl:text><xsl:value-of select="current_condition/weatherDesc"/>
+        <xsl:text>  ${offset 72} Conditions: </xsl:text><xsl:value-of select="current_condition/weatherDesc"/>
         <xsl:value-of select="$new-line" />
-        <xsl:text>  Humidity: </xsl:text><xsl:value-of select="current_condition/humidity" />
+        <xsl:text>  ${offset 72} Humidity: </xsl:text><xsl:value-of select="current_condition/humidity" />
         <xsl:value-of select="$new-line" />
-        <xsl:text>  Wind: </xsl:text><xsl:value-of select="current_condition/windspeedKmph" /><xsl:text> Kmph</xsl:text>
+        <xsl:text>  ${offset 72} Wind: </xsl:text><xsl:value-of select="current_condition/windspeedKmph" /><xsl:text> Kmph</xsl:text>
     </xsl:template>
 </xsl:stylesheet>

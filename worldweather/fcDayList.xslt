@@ -13,10 +13,10 @@
                     <xsl:text></xsl:text>
                 </xsl:when>
                 <xsl:when test="position() = 2">
-                    <xsl:text>Tomorrow</xsl:text>
-                </xsl:when>
+                    <xsl:text> Tomorrow </xsl:text>
+                </xsl:when>                        
                 <xsl:otherwise>
-                    <xsl:text>        </xsl:text>
+                    <xsl:text>    </xsl:text>
                     <xsl:value-of select="date"/>
                 </xsl:otherwise>
             </xsl:choose>

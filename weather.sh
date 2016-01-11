@@ -5,6 +5,7 @@
 #
 # @Author: Hardik Mehta <hard.mehta@gmail.com>
 #
+# @version: 0.3   added support for multiple locations in cache
 # @version: 0.2   optimized 
 # @version: 0.1   basic script
 #
@@ -23,7 +24,6 @@
 
 # "City,Country" e.g. "Munich,Germany"
 LOCID=$1
-
 
 
 CONDITIONS=$2
@@ -50,12 +50,16 @@ XSLTCMD=/usr/bin/xsltproc
 GOOGLEURL="http://www.google.com/ig/api?weather=${LOCID}"
 #WWURL="http://free.worldweatheronline.com/feed/weather.ashx?q=${LOCID}&format=xml&num_of_days=4&key=e4c48cfba5115031121310"
 #WWURL="http://free.worldweatheronline.com/feed/weather.ashx?q=${LOCID}&format=xml&num_of_days=4&key=hhzbatnsph53bm79naj5s988"
-WWURL="http://api.worldweatheronline.com/free/v1/weather.ashx?q=${LOCID}&format=xml&num_of_days=4&key=hhzbatnsph53bm79naj5s988"
+# changed num_of_days from 4 to 5
+WWURL="http://api.worldweatheronline.com/free/v1/weather.ashx?q=${LOCID}&format=xml&num_of_days=5&key=hhzbatnsph53bm79naj5s988"
 CURLURL=$WWURL
 # XSLTDIR=google
 XSLTDIR=worldweather
 
-weather_xml="${RUNDIR}/weatherInfo.xml"
+# rawe 11-01-2016: calculate md5 of location string (=create "unique" id from location)
+LOCID_MD5=$(echo "$LOCID" | md5sum  | cut -d ' ' -f 1)
+
+weather_xml="${RUNDIR}/weatherInfo-${LOCID_MD5}.xml"
 # don't get the file  if created within an hour
 update=3600
 
@@ -120,7 +124,13 @@ elif [ "$CONDITIONS" = "fct" ];
 then
     XSLT=$RUNDIR/${XSLTDIR}/fcTemp.xslt
 else
-    XSLT=$RUNDIR/${XSLTDIR}/weather.xslt 
+    # rawe 11-01-2016: changed default case to avoid unnecessary switch-case-like statement for future xslt files
+    if [ "$CONFITIONS" = "" ];
+    then
+		XSLT=$RUNDIR/${XSLTDIR}/weather.xslt
+    else
+		XSLT = $RUNDIR/${XSLTDIR}/$CONDITIONS.xslt
+	fi
 fi
 
 # echo $XSLT

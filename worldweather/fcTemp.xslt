@@ -7,12 +7,12 @@
     <xsl:template match="data">
         <xsl:variable name="celsius"><xsl:text>C</xsl:text></xsl:variable>
         <xsl:for-each select="weather[position() >= 2 ]">
+            <xsl:text>  </xsl:text>
             <xsl:value-of select="tempMaxC"/> <xsl:value-of select="$celsius"/>
             <xsl:text>/</xsl:text>
             <xsl:value-of select="tempMinC"/> <xsl:value-of select="$celsius"/>
-            <xsl:if test="position() != 3">
-                <xsl:text>         </xsl:text>
-            </xsl:if>
+            <xsl:text>      </xsl:text>
+                        
         </xsl:for-each>
     </xsl:template>
 </xsl:stylesheet>

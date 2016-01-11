@@ -11,6 +11,8 @@
             <xsl:value-of select="current_condition/weatherDesc"/>
         </xsl:with-param>
      </xsl:call-template>
+     
+     
 
     </xsl:template>
 </xsl:stylesheet>

@@ -1,0 +1,104 @@
+
+###  Begin Window Settings  #####################
+own_window yes
+own_window_type normal
+own_window_transparent yes
+own_window_hints undecorated,below,skip_taskbar,skip_pager,sticky
+own_window_colour 000000
+own_window_class Conky
+own_window_title weather conky
+
+### ARGB can be used for real transparency
+### NOTE that a composite manager is required for real transparency.
+### This option will not work as desired (in most cases) in conjunction with
+### own_window_type normal
+ own_window_argb_visual yes # Options: yes or no
+
+### When ARGB visuals are enabled, this use this to modify the alpha value
+### Use: own_window_type normal
+### Use: own_window_transparent no
+### Valid range is 0-255, where 0 is 0% opacity, and 255 is 100% opacity.
+own_window_argb_value 200
+
+minimum_size 370 0  ### width | height
+maximum_width 370
+
+gap_x 10	### left | right
+gap_y 0	### up | down
+
+alignment tl
+#######################  End Window Settings  ###
+###  Font Settings  #############################
+# Use Xft (anti-aliased font and stuff)
+use_xft yes
+xftfont Liberation Mono:bold:size=8
+#ftfont Liberation Sans:size=9
+
+# Alpha of Xft font. Must be a value at or between 1 and 0 ###
+xftalpha 1
+# Force UTF8? requires XFT ###
+override_utf8_locale yes
+
+uppercase no
+#########################  End Font Settings  ###
+###  Colour Settings  ###########################
+draw_shades yes
+default_shade_color 000000
+
+draw_outline no # amplifies text if yes
+default_outline_color 000000
+
+#default_color 656667 # Waldorf original colour
+#default_color 7a7a7a # Flame  & Bunsen Grey
+#default_color 929292 # Labs Grey
+default_color C0C0C0 # Silver
+color0 B0E0E6 # PowderBlue
+color1 778899 # LightSlateGray
+color2 D8BFD8 # Thistle
+color3 9ACD32 # YellowGreen
+color4 FFA07A # LightSalmon
+color5 FFDEAD # NavajoWhite
+color6 00BFFF # DeepSkyBlue
+color7 5F9EA0 # CadetBlue
+color8 BDB76B # DarkKhaki
+color9 CD5C5C # IndianRed
+#######################  End Colour Settings  ###
+###  Borders Section  ###########################
+draw_borders no
+# Stippled borders?
+stippled_borders 5
+# border margins
+border_inner_margin 0
+border_outer_margin 0
+# border width
+border_width 2
+# graph borders
+draw_graph_borders yes #no
+background yes
+
+use_spacer none
+
+text_buffer_size 6144
+
+no_buffers yes
+
+short_units yes
+
+pad_percents 2
+
+imlib_cache_size 0
+
+double_buffer yes
+
+update_interval 1
+
+TEXT
+
+${execpi 1 ~/git/google_weather/fullweather.sh "Stuttgart,Germany"}
+
+#${execpi 1800 ~/git/google_weather/weather.sh "Stuttgart,Germany" dl }
+#${font weather:size=32}${execpi 1800 ~/git/google_weather/weather.sh "Stuttgart,Germany" fcp }${font}
+#${execpi 1800 ~/git/google_weather/weather.sh "Stuttgart,Germany" fct}
+
+#${font weather:size=72}${offset 4}${voffset 4}${execpi 1800 ~/git/google_weather/weather.sh "Stuttgart,Germany" cp }${font}${voffset -76}
+#${offset  }${execpi 1800 ~/git/google_weather/weather.sh "Stuttgart,Germany" }
