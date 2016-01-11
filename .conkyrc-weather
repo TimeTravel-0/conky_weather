@@ -94,7 +94,7 @@ update_interval 1
 
 TEXT
 
-${execpi 1 ~/git/google_weather/fullweather.sh "Stuttgart,Germany"}
+${execpi 1800 ~/git/google_weather/fullweather.sh "Stuttgart,Germany"}
 
 #${execpi 1800 ~/git/google_weather/weather.sh "Stuttgart,Germany" dl }
 #${font weather:size=32}${execpi 1800 ~/git/google_weather/weather.sh "Stuttgart,Germany" fcp }${font}
